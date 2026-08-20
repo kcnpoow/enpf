@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+
+Disallow: /cgi-bin/
+Disallow: /private/
+
+Sitemap: https://mypension.kz/sitemap.xml
