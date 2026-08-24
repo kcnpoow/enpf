@@ -1482,7 +1482,9 @@ footer {
 .fl span {
   color: var(--green-mid);
 }
-
+.faq {
+  padding: 5rem 0;
+}
 @media (max-width: 900px) {
   .hero-wrapper,
   .calc-wrapper,
