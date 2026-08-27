@@ -52,7 +52,6 @@
           <li><a href="#calc">Калькулятор</a></li>
           <li><a href="#threshold">Порог</a></li>
           <li><a href="#vs">Сравнение</a></li>
-          <li><a href="#aiChat">ИИ-консультант</a></li>
           <li><a href="#form">Заявка</a></li>
         </ul>
 
@@ -703,98 +702,6 @@
             </div>
           </div>
         </section>
-      </div>
-
-      <!-- AI CHAT -->
-      <div class="ai-section" id="aiChat">
-        <div class="ai-inner">
-          <div class="ai-info">
-            <div class="sec-label">ИИ-консультант</div>
-            <h2>Айдана знает всё об аннуитете</h2>
-            <p>
-              Задайте любой вопрос — Айдана ответит мгновенно на основе
-              актуальных данных 2026 года. Поможет рассчитать, объяснит порог,
-              оформит заявку в WhatsApp.
-            </p>
-            <div class="ai-feats">
-              <div class="af">
-                <i class="ti ti-calculator"></i>
-                <div>
-                  <h4>Умный расчёт</h4>
-                  <p>Опишите ситуацию — рассчитает выплату и проверит порог</p>
-                </div>
-              </div>
-              <div class="af">
-                <i class="ti ti-help-circle"></i>
-                <div>
-                  <h4>Ответы на вопросы</h4>
-                  <p>
-                    ОПВ/ОППВ, порог, бонус, гарантированный период, семейный
-                    аннуитет
-                  </p>
-                </div>
-              </div>
-              <div class="af">
-                <i class="ti ti-brand-whatsapp"></i>
-                <div>
-                  <h4>Заявка в WhatsApp</h4>
-                  <p>Соберёт данные и отправит готовую заявку специалисту</p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="chat-box">
-            <div class="chat-head">
-              <div class="chat-av"><i class="ti ti-robot"></i></div>
-              <div class="chat-head-info">
-                <h4>Айдана · ИИ-консультант</h4>
-                <p>Пенсионный аннуитет</p>
-              </div>
-              <div class="chat-dot"></div>
-            </div>
-            <div class="chat-msgs" id="chatMsgs">
-              <div class="msg bot">
-                <div class="msg-av"><i class="ti ti-robot"></i></div>
-                <div>
-                  <div class="msg-bubble">
-                    Здравствуйте! Я Айдана 👋 Помогу рассчитать ваш аннуитет,
-                    отвечу на вопросы об ОПВ/ОППВ, порогах и бонусах. С чего
-                    начнём?
-                  </div>
-                  <div class="msg-time">сейчас</div>
-                </div>
-              </div>
-            </div>
-            <div class="chat-typing" id="chatTyping">
-              <div class="dots"><span></span><span></span><span></span></div>
-            </div>
-            <div class="chat-sugg" id="chatSugg">
-              <button class="sugg" onclick="sendSugg(this)">
-                Рассчитать аннуитет
-              </button>
-              <button class="sugg" onclick="sendSugg(this)">
-                Какой у меня порог?
-              </button>
-              <button class="sugg" onclick="sendSugg(this)">
-                Что такое ОППВ?
-              </button>
-              <button class="sugg" onclick="sendSugg(this)">
-                Оставить заявку
-              </button>
-            </div>
-            <div class="chat-input-row">
-              <input
-                class="chat-inp"
-                id="chatInp"
-                placeholder="Напишите вопрос..."
-                onkeydown="if (event.key === 'Enter') sendMsg();"
-              />
-              <button class="chat-send-btn" onclick="sendMsg()">
-                <i class="ti ti-send"></i>
-              </button>
-            </div>
-          </div>
-        </div>
       </div>
 
       <!-- FORM -->
