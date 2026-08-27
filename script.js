@@ -1,4 +1,3 @@
-// ===== ДАННЫЕ FREEDOM LIFE ФЕВРАЛЬ 2026 =====
 var opvM = {
   45: [10, 9163723, 76849],
   46: [9, 9248572, 71157],
@@ -578,7 +577,7 @@ function handleLead(text) {
     leadData.city = text;
     collectingLead = false;
     var waText = encodeURIComponent(
-      "🔔 Новая заявка с сайта Freedom Life!\n" +
+      "🔔 Новая заявка!\n" +
         "━━━━━━━━━━━━━━━━━━\n" +
         "👤 Имя: " +
         leadData.name +
@@ -631,25 +630,22 @@ function buildWaText() {
   var t = document.getElementById("ftime").value;
   var s = document.getElementById("fsum").value;
   return encodeURIComponent(
-    "🔔 Заявка с сайта Freedom Life!\n" +
-      "━━━━━━━━━━━━━━━━━━\n" +
-      "👤 Имя: " +
+    "Новая заявка!\n" +
+      "Имя: " +
       n +
       "\n" +
-      "📞 Телефон: " +
+      "Телефон: " +
       p +
       "\n" +
-      "🏙️ Город: " +
+      "Город: " +
       c +
       "\n" +
-      "⏰ Время: " +
+      "Время: " +
       t +
       "\n" +
-      "💰 Накопления: " +
+      "Накопления: " +
       s +
-      "\n" +
-      "━━━━━━━━━━━━━━━━━━\n" +
-      "⏰ Клиент ждёт звонка!",
+      "\n",
   );
 }
 
