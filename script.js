@@ -765,3 +765,160 @@ function toggleFaq(i) {
     icon.style.transform = "rotate(0deg)";
   }
 }
+
+// REELS
+const reelsTrack = document.querySelector(".reels");
+const prevBtn = document.querySelector(".reels-left button");
+const nextBtn = document.querySelector(".reels-right button");
+
+let isDown = false;
+let startX = 0;
+let scrollLeft = 0;
+let isDragging = false;
+
+reelsTrack.addEventListener("mousedown", (e) => {
+  isDown = true;
+  isDragging = false;
+  reelsTrack.classList.add("is-dragging");
+
+  reelsTrack.style.scrollSnapType = "none";
+  reelsTrack.style.scrollBehavior = "auto";
+
+  startX = e.pageX - reelsTrack.offsetLeft;
+  scrollLeft = reelsTrack.scrollLeft;
+});
+
+window.addEventListener("mouseup", () => {
+  if (!isDown) return;
+  isDown = false;
+  reelsTrack.classList.remove("is-dragging");
+
+  reelsTrack.style.scrollSnapType = "";
+  reelsTrack.style.scrollBehavior = "smooth";
+});
+
+window.addEventListener("mousemove", (e) => {
+  if (!isDown) return;
+  e.preventDefault();
+
+  const x = e.pageX - reelsTrack.offsetLeft;
+  const walk = (x - startX) * 1.5;
+
+  if (Math.abs(walk) > 5) {
+    isDragging = true;
+  }
+
+  reelsTrack.scrollLeft = scrollLeft - walk;
+});
+
+reelsTrack.addEventListener(
+  "click",
+  (e) => {
+    if (isDragging) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
+  },
+  true,
+);
+
+function getScrollAmount() {
+  const gap = parseFloat(window.getComputedStyle(reelsTrack).gap) || 0;
+
+  return 1 + gap;
+}
+
+function updateButtonStates() {
+  const threshold = 150;
+  const maxScrollLeft = reelsTrack.scrollWidth - reelsTrack.clientWidth;
+  const currentScroll = reelsTrack.scrollLeft;
+
+  if (prevBtn) prevBtn.disabled = currentScroll <= threshold;
+  if (nextBtn)
+    nextBtn.disabled =
+      currentScroll >= maxScrollLeft - threshold || maxScrollLeft <= 0;
+}
+
+if (nextBtn) {
+  nextBtn.addEventListener("click", () => {
+    reelsTrack.scrollBy({ left: getScrollAmount(), behavior: "smooth" });
+  });
+}
+
+if (prevBtn) {
+  prevBtn.addEventListener("click", () => {
+    reelsTrack.scrollBy({ left: -getScrollAmount(), behavior: "smooth" });
+  });
+}
+
+reelsTrack.addEventListener("scroll", updateButtonStates, { passive: true });
+window.addEventListener("resize", updateButtonStates);
+updateButtonStates();
+
+const containers = document.querySelectorAll(".video-container");
+const allVideos = document.querySelectorAll(".reel video");
+
+containers.forEach((container) => {
+  const video = container.querySelector("video");
+  const playBtn = container.querySelector(".play-overlay-btn");
+  const muteBtn = container.querySelector(".mute-btn");
+  const playIcon = playBtn.querySelector("i");
+  const muteIcon = muteBtn?.querySelector("i");
+
+  function togglePlay() {
+    if (video.paused) {
+      allVideos.forEach((v) => {
+        if (v !== video) {
+          v.pause();
+          v.closest(".video-container")?.classList.remove("is-playing");
+        }
+      });
+      video.play();
+      container.classList.add("is-playing");
+      if (playIcon) playIcon.className = "ti ti-player-pause";
+    } else {
+      video.pause();
+      container.classList.remove("is-playing");
+      if (playIcon) playIcon.className = "ti ti-player-play";
+    }
+  }
+
+  playBtn.addEventListener("click", (e) => {
+    e.stopPropagation();
+    togglePlay();
+  });
+
+  video.addEventListener("click", () => {
+    if (!isDragging) togglePlay();
+  });
+
+  if (muteBtn) {
+    muteBtn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      video.muted = !video.muted;
+      if (muteIcon) {
+        muteIcon.className = video.muted ? "ti ti-volume-off" : "ti ti-volume";
+      }
+    });
+  }
+
+  video.addEventListener("pause", () => {
+    container.classList.remove("is-playing");
+    if (playIcon) playIcon.className = "ti ti-player-play";
+  });
+});
+
+function pauseAllVideos() {
+  allVideos.forEach((video) => {
+    if (!video.paused) {
+      video.pause();
+      video.closest(".video-container")?.classList.remove("is-playing");
+      const playIcon = video
+        .closest(".video-container")
+        ?.querySelector(".play-overlay-btn i");
+      if (playIcon) playIcon.className = "ti ti-player-play";
+    }
+  });
+}
+
+reelsTrack.addEventListener("scroll", pauseAllVideos, { passive: true });
