@@ -86,24 +86,31 @@ nav {
 
 /* HERO */
 .hero {
-  padding: 0 4rem;
+  position: relative;
+  padding: 4rem;
   background: linear-gradient(160deg, #e8f7f1 0%, #c8ebd9 100%);
   background-size: cover;
-  background-image: url("images/hero-bg.svg");
+  background-image: url("images/hero-bg.webp");
+  min-height: calc(100dvh - 71px);
+  display: flex;
+  align-items: center;
 }
 .hero-wrapper {
+  position: relative;
   padding: 0;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  align-items: stretch;
-  max-width: 1100px;
-  margin: 0 auto;
-}
-.hero-left {
-  padding: 5rem 3rem 5rem 0;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  align-items: center;
+  max-width: 1100px;
+  width: 100%;
+  margin: 0 auto;
+  height: 100%;
+}
+.hero-container {
+  width: 100%;
+  padding: 32px;
+  background-color: white;
+  border-radius: 18px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
 }
 .hero-badge {
   display: inline-flex;
@@ -229,7 +236,6 @@ nav {
   display: flex;
   align-items: flex-end;
   justify-content: center;
-  /* background: linear-gradient(160deg, #e8f7f1 0%, #c8ebd9 100%); */
   overflow: hidden;
 }
 .hero-photo {
@@ -240,16 +246,13 @@ nav {
   display: block;
 }
 .hero-card {
-  position: absolute;
-  bottom: 2rem;
-  left: 2rem;
-  right: 2rem;
   background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(12px);
   border-radius: 16px;
   padding: 1.25rem;
   border: 1px solid rgba(255, 255, 255, 0.8);
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+  max-width: 600px;
 }
 .hero-card-title {
   font-size: 12px;
@@ -1367,6 +1370,15 @@ footer {
 
   footer div:last-child {
     text-align: right;
+  }
+
+  .hero {
+    min-height: calc(100dvh - 192px);
+    background-position: center;
+  }
+
+  .hero-container {
+    width: auto;
   }
 }
 
