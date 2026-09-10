@@ -108,9 +108,11 @@ nav {
 .hero-container {
   width: 100%;
   padding: 32px;
-  background-color: white;
+  background-color: rgba(255, 255, 255, 0.8);
   border-radius: 18px;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
 }
 .hero-badge {
   display: inline-flex;
