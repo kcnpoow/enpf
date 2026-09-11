@@ -1379,7 +1379,7 @@ footer {
 
   .hero {
     min-height: calc(100dvh - 192px);
-    background-position: center;
+    background-position: right;
   }
 
   .hero-container {
